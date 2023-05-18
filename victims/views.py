@@ -13,5 +13,5 @@ def addvictim(request):
     return render(request,"victims/add.html",{"form":form})
 
 def index(request):
-    victims = All_profiles.objects.all()
+    victims = All_profiles.objects.all().order_by('-pickup_date')
     return render(request,"victims/index.html",{"victims":victims})
