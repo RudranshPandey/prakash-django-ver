@@ -15,6 +15,7 @@ class volunteer_profiles(models.Model):
     ngo_association = models.CharField(max_length=100)
     area_of_operation = models.CharField(max_length=100)
 
+
     class Meta:
         verbose_name = "Volunteer Profile"
     

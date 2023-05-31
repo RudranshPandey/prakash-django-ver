@@ -24,6 +24,8 @@ from prakash import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path("victims/",include("victims.urls"))
+    path("victims/",include("victims.urls")),
+    path("volunteers/",include("volunteers.urls")),
+    #path('api-auth/', include('rest_framework.urls'))
     #path('victims/', include('victims.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
