@@ -1,0 +1,45 @@
+{% extends "layout/base.html" %}
+{% block content %}
+
+
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white ">All Volunteers </div>
+        <div class="card-body">
+            <a class="btn btn-primary my-2" href="{% url 'volunteers:add' %}">Add Volunteers</a>
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Volunteer no</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>NGO Associated</th>
+                        <th>Area Of Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for volunteer in volunteers %}
+                    <tr>
+                        <td>{{volunteer.volunteer_no}}</td>
+                        <td>{{volunteer.first_name}}</td>
+                        <td>{{volunteer.last_name}}</td>
+                        <td>{{volunteer.ngo_association }}</td>
+                        <td>{{volunteer.area_of_operation }}</td>
+                        <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:update_view' volunteers.id %}">Edit Profile</a></td>
+                        <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:add' %}">Send Alert</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
