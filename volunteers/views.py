@@ -18,7 +18,7 @@ def index(request):
     volunteers = volunteer_profiles.objects.all().order_by('-volunteer_no')
     return render(request,"volunteers/index.html",{"volunteers":volunteers})
 
-def update_view(request, pk):
+def update_view(request,pk):
     object = get_object_or_404(volunteer_profiles,pk=pk)  # Use the passed pk argument instead of hardcoding it
     if request.method == "POST":
         form = volunteerform(request.POST, request.FILES, instance=object)

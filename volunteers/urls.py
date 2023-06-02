@@ -7,6 +7,6 @@ app_name = "volunteers"
 urlpatterns = [
     path("add",addvolunteer,name="add"),
     path("index",index,name="index"),
-    path("update/<int:pk>/",update_view,name="update_view"),
+    path("update/<int:pk>/",update_view,name="update_view")
     #path('update/<int:pk>/',views.update_view, name='update_view')
 ]

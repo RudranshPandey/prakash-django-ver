@@ -28,7 +28,7 @@
                         <td>{{volunteer.last_name}}</td>
                         <td>{{volunteer.ngo_association }}</td>
                         <td>{{volunteer.area_of_operation }}</td>
-                        <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:update_view' volunteers.id %}">Edit Profile</a></td>
+                        <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:update_view' volunteer.id %}">Edit Profile</a></td>
                         <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:add' %}">Send Alert</a></td>
 
                     </tr>
