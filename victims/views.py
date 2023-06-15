@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .forms import AllProfileForm
 from .models import All_profiles
+from django.http import JsonResponse
+from .serializers import All_profilesSerializers
 
 def addvictim(request):
 
@@ -26,3 +28,11 @@ def update_view(request, pk):
     else:
         form = AllProfileForm(instance=object)
     return render(request,"victims/update.html", {"form": form, "object": object})
+
+def victims_list(request):
+    victims = All_profiles.objects.all()
+    serializer = All_profilesSerializers(victims,many=True)
+    return JsonResponse(serializer.data, safe=False)
+
+
+
