@@ -16,8 +16,11 @@
                         <th>Last Name</th>
                         <th>Age</th>
                         <th>Gender</th>
+                        <th>Phone number</th>
                         <th>NGO Associated</th>
                         <th>Area Of Operation</th>
+                        <th>Controls</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +29,9 @@
                         <td>{{volunteer.volunteer_no}}</td>
                         <td>{{volunteer.first_name}}</td>
                         <td>{{volunteer.last_name}}</td>
+                        <td>{{volunteer.age}}</td>
+                        <td>{{volunteer.gender}}</td>
+                        <td>{{volunteer.phone_number}}</td>
                         <td>{{volunteer.ngo_association }}</td>
                         <td>{{volunteer.area_of_operation }}</td>
                         <td> <a class="btn btn-primary my-1" href="{% url 'volunteers:update_view' volunteer.id %}">Edit Profile</a></td>
