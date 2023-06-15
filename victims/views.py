@@ -3,6 +3,10 @@ from .forms import AllProfileForm
 from .models import All_profiles
 from django.http import JsonResponse
 from .serializers import All_profilesSerializers
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
 
 def addvictim(request):
 
@@ -29,10 +33,21 @@ def update_view(request, pk):
         form = AllProfileForm(instance=object)
     return render(request,"victims/update.html", {"form": form, "object": object})
 
+
+@api_view(['GET','POST'])
 def victims_list(request):
-    victims = All_profiles.objects.all()
-    serializer = All_profilesSerializers(victims,many=True)
-    return JsonResponse(serializer.data, safe=False)
+    if request.method == 'GET':
+        victims = All_profiles.objects.all()
+        serializer = All_profilesSerializers(victims,many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    if request.method == 'POST':
+        serializer = All_profilesSerializers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
