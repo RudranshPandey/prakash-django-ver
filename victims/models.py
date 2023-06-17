@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.html import mark_safe
-
+import uuid
 # Create your models here.
 class All_profiles(models.Model):
     GENDER_LISTS=(

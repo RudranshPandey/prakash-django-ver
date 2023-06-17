@@ -6,7 +6,7 @@ from .serializers import All_profilesSerializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-
+from django.core.paginator import Paginator
 
 def addvictim(request):
 
@@ -19,8 +19,12 @@ def addvictim(request):
     return render(request,"victims/add.html",{"form":form})
 
 def index(request):
-    victims = All_profiles.objects.all().order_by('-pickup_date')
-    return render(request,"victims/index.html",{"victims":victims})
+    victims = All_profiles.objects.all().order_by('-id') 
+    p = Paginator(All_profiles.objects.all(),10)
+    page = request.GET.get('page')
+    victims_per_page = p.get_page(page)
+    nums = "a" * victims_per_page.paginator.num_pages
+    return render(request,"victims/index.html",{"victims":victims,'victims_per_page':victims_per_page,'nums' : nums})
 
 def update_view(request, pk):
     object = get_object_or_404(All_profiles,pk=pk)  # Use the passed pk argument instead of hardcoding it
