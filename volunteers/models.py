@@ -7,7 +7,6 @@ class volunteer_profiles(models.Model):
         ('FEMALE','FEMALE'),
         ('OTHER','OTHER')
     )
-    volunteer_no = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     age = models.IntegerField()
@@ -21,4 +20,4 @@ class volunteer_profiles(models.Model):
         verbose_name = "Volunteer Profile"
     
     def __str__(self):
-        return f"{self.volunteer_no},{self.first_name},{self.last_name},{self.phone_number}"
+        return f"{self.first_name},{self.last_name},{self.phone_number}"
