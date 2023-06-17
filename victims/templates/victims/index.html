@@ -11,6 +11,7 @@
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>
+                        <th>Victim ID</th>
                         <th>Memo Number</th>
                         <th>First Name</th>
                         <th>Pickup Location</th>
@@ -21,6 +22,7 @@
                 <tbody>
                     {% for victim in victims %}
                     <tr>
+                        <td>{{victim.id}}</td>
                         <td>{{victim.memo_no}}</td>
                         <td>{{victim.first_name}}</td>
                         <td>{{victim.pickup_location}}</td>
