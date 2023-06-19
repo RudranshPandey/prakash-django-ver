@@ -20,11 +20,11 @@ def addvictim(request):
 
 def index(request):
     victims = All_profiles.objects.all().order_by('-id') 
-    p = Paginator(All_profiles.objects.all(),10)
+    p = Paginator(All_profiles.objects.all(),1)
     page = request.GET.get('page')
     victims_per_page = p.get_page(page)
     nums = "a" * victims_per_page.paginator.num_pages
-    return render(request,"victims/index.html",{"victims":victims,'victims_per_page':victims_per_page,'nums' : nums})
+    return render(request,"victims/index.html",{"victims":victims,'victims_per_page':victims_per_page,'nums': nums})
 
 def update_view(request, pk):
     object = get_object_or_404(All_profiles,pk=pk)  # Use the passed pk argument instead of hardcoding it

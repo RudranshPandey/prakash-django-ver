@@ -9,7 +9,7 @@ app_name = "victims"
 urlpatterns = [
     path("add",addvictim,name="add"),
     path("index",index,name="index"),
-    path("update/<int:pk>/",update_view,name="update_view"),
+    path("update/<str:pk>/",update_view,name="update_view"),
     path("victims/",views.victims_list),
-    path("victims/<int:id>",views.victims_detail),
+    path("victims/<str:id>",views.victims_detail),
 ]

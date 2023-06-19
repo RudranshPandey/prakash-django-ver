@@ -11,22 +11,24 @@
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>Victim ID</th>
-                        <th>Memo Number</th>
-                        <th>First Name</th>
+                        <!--<th>Victim ID</th>-->
+                        <!--<th>Memo Number</th>-->
+                        <!--<th>First Name</th>-->
                         <th>Pickup Location</th>
                         <th>Pickup Date</th>
+                        <th>Description</th>
                         <th>Controls</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for victim in victims_per_page %}
                     <tr>
-                        <td>{{victim.id}}</td>
-                        <td>{{victim.memo_no}}</td>
-                        <td>{{victim.first_name}}</td>
+                        <!--<td>{{victim.id}}</td>-->
+                        <!--<td>{{victim.memo_no}}</td>-->
+                        <!--<<td>{{victim.first_name}}</td>-->
                         <td>{{victim.pickup_location}}</td>
                         <td>{{victim.pickup_date }}</td>
+                        <td>{{victims.description}}</td>
                         <td> <a class="btn btn-primary my-1" href="{% url 'victims:update_view' victim.id %}">Edit Profile</a></td>
                         <td> <a class="btn btn-primary my-1" href="{% url 'victims:add' %}">Send Alert</a></td>
 
@@ -57,7 +59,7 @@
 
 {% for i in victims_per_page.paginator.page_range %}
 {% if victims_per_page.number == i %}
-<li class="page-item active"><span class="page-link">{{ i }}</span class="sr-only"></li>
+<li class="page-item active"><span class="page-link">{{ i }}</span ></li>
 {% elif i > victims_per_page.number|add:'-2' and i < victims_per_page.number|add:'2' %}
 <li class="page-item"><a href="/victims/index?page={{ i }}" class="page-link">{{ i }}</a></li>
 {% endif %}

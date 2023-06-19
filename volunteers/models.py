@@ -1,5 +1,5 @@
 from django.db import models
-
+import shortuuid
 # Create your models here.
 class volunteer_profiles(models.Model):
     GENDER_LISTS=(
@@ -7,6 +7,7 @@ class volunteer_profiles(models.Model):
         ('FEMALE','FEMALE'),
         ('OTHER','OTHER')
     )
+    id = models.CharField(max_length=22, primary_key=True, default=shortuuid.uuid, editable=False)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     age = models.IntegerField()
