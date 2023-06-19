@@ -20,7 +20,7 @@ def addvictim(request):
 
 def index(request):
     victims = All_profiles.objects.all().order_by('-id') 
-    p = Paginator(All_profiles.objects.all(),1)
+    p = Paginator(All_profiles.objects.all(),10)
     page = request.GET.get('page')
     victims_per_page = p.get_page(page)
     nums = "a" * victims_per_page.paginator.num_pages
