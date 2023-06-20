@@ -7,13 +7,18 @@ import shortuuid.main
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('volunteers', '0006_alter_volunteer_profiles_id'),
+        ('victims', '0010_alter_all_profiles_id_alter_all_profiles_memo_no'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='volunteer_profiles',
+            model_name='all_profiles',
             name='id',
             field=models.CharField(default=shortuuid.main.ShortUUID.uuid, editable=False, max_length=22, primary_key=True, serialize=False),
+        ),
+        migrations.AlterField(
+            model_name='all_profiles',
+            name='memo_no',
+            field=models.IntegerField(blank=True, default=''),
         ),
     ]
