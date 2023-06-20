@@ -9,7 +9,7 @@ class All_profiles(models.Model):
         ('OTHER','OTHER')
     )
     id = models.CharField(max_length=22, primary_key=True, default=shortuuid.uuid, editable=False)
-    memo_no = models.CharField(max_length=50,default="",blank =True)
+    memo_no = models.IntegerField(default="",blank =True)
     first_name = models.CharField(max_length=50,default="",blank=True)
     last_name = models.CharField(max_length=50, default="", blank=True)
     age = models.IntegerField(default="",blank=True)

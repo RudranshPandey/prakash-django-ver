@@ -12,4 +12,5 @@ urlpatterns = [
     path("update/<str:pk>/",update_view,name="update_view"),
     path("victims/",views.victims_list),
     path("victims/<str:id>",views.victims_detail),
+    path("victimsglobalview/",views.globally_view_victims,name="victimsglobalview"),
 ]
