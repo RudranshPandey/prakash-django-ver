@@ -28,6 +28,7 @@ urlpatterns = [
     path('homepage/',views.homepage,name="homepage"),
     path("victims/",include("victims.urls")),
     path("volunteers/",include("volunteers.urls")),
+    path("home/",include("home.urls")),
     #path('api-auth/', include('rest_framework.urls'))
     #path('victims/', include('victims.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
