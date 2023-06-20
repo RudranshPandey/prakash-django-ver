@@ -6,8 +6,7 @@ from .views import addvolunteer,index,update_view
 app_name = "volunteers"
 urlpatterns = [
     path("add",addvolunteer,name="add"),
-    path("index",index,name="index"),
+    path("index/",index,name="index"),
     path("update/<str:pk>/",update_view,name="update_view"),
     #path('update/<int:pk>/',views.update_view, name='update_view')
-    path("volunteersglobalview/",views.globally_view_volunteers,name="globalvolunteersview")
 ]
