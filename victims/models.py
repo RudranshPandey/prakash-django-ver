@@ -24,7 +24,7 @@ class All_profiles(models.Model):
         verbose_name = "All Profile"
 
     def __str__(self):
-        return f"{self.memo_no},{self.pickup_location}"
+        return f"{self.id},{self.pickup_location}"
 
     def imgpreview(self):
         return mark_safe(f'<img src = "{self.Image.url}" width = "300"/>')

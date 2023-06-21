@@ -10,7 +10,7 @@ urlpatterns = [
     path("add",addvictim,name="add"),
     path("index",index,name="index"),
     path("update/<str:pk>/",update_view,name="update_view"),
-    path("victims/",views.victims_list),
-    path("victims/<str:id>",views.victims_detail),
+    path("victim_list/",views.victims_list),
+    path("victim/<str:id>/",views.victims_detail),
     path("victimsglobalview/",views.globally_view_victims,name="victimsglobalview"),
 ]
