@@ -1,8 +1,16 @@
 {% extends "layout/base.html" %}
 {% block content %}
-
-
-
+<br>
+<div class="container d-flex justify-content-center">
+	<div>
+        <form action="/home/index/" method="GET">
+		<div class="input-group mb-5" style="width: 400px;" >
+			<input type="text" class="form-control" placeholder="Search" name="search">
+		    <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+	    </div>	
+        </form>
+    </div>
+</div>
 <div class="container my-5">
     <div class="card">
         <div class="card-header bg-dark text-white ">All Homes</div>
@@ -11,7 +19,7 @@
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>
-                        <!--<th>Volunteer ID</th>-->
+                        <th>Home ID</th>
                         <th>Home Name</th>
                         <th>Home Address</th>
                         <th>Phone number</th>
@@ -24,7 +32,7 @@
                 <tbody>
                     {% for home in homes %}
                     <tr>
-                        <!--<td>{{volunteer.id}}</td>-->
+                        <td>{{home.id}}</td>
                         <td>{{home.home_name}}</td>
                         <td>{{home.home_address}}</td>
                         <td>{{home.phone_number}}</td>
