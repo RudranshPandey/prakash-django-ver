@@ -15,24 +15,6 @@ def addvolunteer(request):
     return render(request,"volunteers/add.html",{"form":form})
 
 def index(request):
-    volunteers = volunteer_profiles.objects.all().order_by('-id')
-    q = Paginator(volunteer_profiles.objects.all(),10)
-    page = request.GET.get('page')
-    vols = q.get_page(page)
-    return render(request,"volunteers/index.html",{"volunteers":volunteers,'vols':vols})
-
-def update_view(request,pk):
-    object = get_object_or_404(volunteer_profiles,pk=pk)  # Use the passed pk argument instead of hardcoding it
-    if request.method == "POST":
-        form = volunteerform(request.POST, request.FILES, instance=object)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse("volunteers:index"))
-    else:
-        form = volunteerform(instance=object)
-    return render(request,"volunteers/update.html", {"form": form, "object": object})
-
-def globally_view_volunteers(request):
     chk = request.GET.get('search')
     volunteers = volunteer_profiles.objects.all().order_by('-id')
     if chk:
@@ -55,7 +37,24 @@ def globally_view_volunteers(request):
                     Q(ngo_association__icontains=chk) |
                     Q(area_of_operation__icontains=chk) 
                 )
+    q = Paginator(volunteer_profiles.objects.all(),10)
+    page = request.GET.get('page')
+    vols = q.get_page(page)
+    return render(request,"volunteers/index.html",{"volunteers":volunteers,'vols':vols})
+
+def update_view(request,pk):
+    object = get_object_or_404(volunteer_profiles,pk=pk)  # Use the passed pk argument instead of hardcoding it
+    if request.method == "POST":
+        form = volunteerform(request.POST, request.FILES, instance=object)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("volunteers:index"))
+    else:
+        form = volunteerform(instance=object)
+    return render(request,"volunteers/update.html", {"form": form, "object": object})
+
+'''def globally_view_volunteers(request):
     q = Paginator(volunteers,10)
     page = request.GET.get('page')
     vols = q.get_page(page)
-    return render(request,"volunteers/volunteersglobalview.html",{"volunteers":volunteers,'vols':vols})
+    return render(request,"volunteers/volunteersglobalview.html",{"volunteers":volunteers,'vols':vols})'''
