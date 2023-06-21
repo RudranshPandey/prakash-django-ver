@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .forms import home_profiles, homeform
 from .models import home_profiles
 from django.core.paginator import Paginator
-
+from django.db.models import Q
 
 def addhome(request):
     form = homeform()
@@ -14,7 +14,20 @@ def addhome(request):
     return render(request,"home/add.html",{"form":form})
 
 def index(request):
+    chk = request.GET.get('search')
     homes = home_profiles.objects.all().order_by('-id')
+    if chk:
+        if chk.isdigit():
+            homes = homes.filter(
+                Q(phone_number__contains=chk)
+            )
+        else:
+                homes = homes.filter(
+                    Q(home_name__icontains=chk) |
+                    Q(home_address__icontains=chk) |
+                    Q(contact_person__icontains=chk) |
+                    Q(category__icontains=chk) 
+                )
     q = Paginator(home_profiles.objects.all(),10)
     page = request.GET.get('page')
     vols = q.get_page(page)
