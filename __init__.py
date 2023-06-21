@@ -1,2 +1,0 @@
-def views():
-    return views()
